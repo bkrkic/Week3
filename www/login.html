@@ -4,27 +4,29 @@
         <meta charset="UTF-8">
         <!--Task 4.2. Link to a CDN copy of the jQuery library-->
         <script 
-        src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous">
-        </script>
+        src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
         <!--Task 4.1. Link an external file in the head section of your homepage html file form-->
-        <script src="/js/script.js"></script>      
+        <script src="script.js"></script>      
     </head>
 
     <body>
-        <form id="loginform" method="POST">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
-            <label for="password">Password</label>
-            <input type="text" name="password" id="password">
-            <input type="submit" value="Login">
-        </form>
-
+    <div id="page">
+        <div id="loginpage">
+            <form id="loginform" method="POST">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password">
+                <input type="submit" value="Login">
+            </form>
+        </div>
         <!--Task 4. Responding to client results-->
-        <div id="errormsg" class="hidemessage">User credentials do not match</div>
-        <div id="successmsg" class="showmessage">User credentials match</div>
+        <div id="errormsg" class="hidemessage">User credentials do not match.</div>
+        <div id="successmsg" class="hidemessage">User credentials match!</div>
 
+    </div>
     </body>
 
 </html>

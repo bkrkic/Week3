@@ -4,14 +4,15 @@ var http = require('http').Server(app);
 
 //Requires path for routes
 const path = require('path');
-require('./routes/homeroute.js').route(app, path)
+require('./routes/homeroute.js').route(app, path);
 
-//When a user fills out the login form, the information gets sent back to the server.
-//The body-parser module is middleware that parses user input and makes it available through the REQ.BODY property.
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(express.static(__dirname + '/www'));
+
+app.get('/example', function(req, res){
+    res.sendFile(__dirname + '/www/example.html');
+});
 
 let server = http.listen(3000, function(){
     let host = server.address().address;
@@ -20,17 +21,26 @@ let server = http.listen(3000, function(){
     console.log("Server listening on: "+ host + " port: " + port);
 });
 
-app.get('/example', function(req, res){
-    res.sendFile(__dirname + '/www/example.html');
-});
 
+
+// /*Task 3. Modules
+// When a user fills out the login form, the information gets sent back to the server.
+// The body-parser module is middleware that parses user input and makes it available through the REQ.BODY property.*/
+// const bodyParser = require('body-parser');
+// app.use(bodyParser.urlencoded({extended: false}));
+
+var users = [{'username': 'admin', 'password': 'password'},
+{'username': 'bego', 'password': 'krkic'},
+{'username': 'student', 'password': 'password123'}];
 
 //User login verification 
 app.post('/login', function(req, res) {
 
-    var users = [{'username': 'admin', 'password': 'password'},
-    {'username': 'bego', 'password': 'krkic'},
-    {'username': 'student', 'password': 'password123'}];
+    // if(!req.body){
+    //     return res.sendStatus(400);
+    // }
+
+    console.log(req.body)
 
     var account = {};
     //Request form properties using req.body.username and req.body.password
@@ -43,14 +53,14 @@ app.post('/login', function(req, res) {
             account.valid = true;
         }
     }
-    
-    if (account.valid == true){
-        //Send username of user if OK success status response
-        res.status(200).send('Successful login');       
-    } else {
-        res.status(403).send('Unsuccessful login');
-    }
 
-    res.send(account.valid);
+    // if (account.valid == true){
+    //     //Send username of user if OK success status response
+    //     res.status(200).send('Successful login');       
+    // } else {
+    //     res.status(403).send('Unsuccessful login');
+    // }
+
+    res.send(account);
 
 });
