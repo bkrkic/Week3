@@ -24,6 +24,8 @@ app.get('/example', function(req, res){
     res.sendFile(__dirname + '/www/example.html');
 });
 
+
+//User login verification 
 app.post('/login', function(req, res) {
 
     var users = [{'username': 'admin', 'password': 'password'},
@@ -34,6 +36,7 @@ app.post('/login', function(req, res) {
     //Request form properties using req.body.username and req.body.password
     account.username = req.body.username;
     account.password = req.body.password;
+    //Check user credentials and report true if valid
     account.valid = false;
     for (var i = 0; i < users.length; i++){
         if (account.username == users[i].username && account.password == users[i].password) {
@@ -43,9 +46,11 @@ app.post('/login', function(req, res) {
     
     if (account.valid == true){
         //Send username of user if OK success status response
-        return res.status(200).send(account.username);       
-    }else{
-        return res.status(403).send('Unsuccessful login');
+        res.status(200).send('Successful login');       
+    } else {
+        res.status(403).send('Unsuccessful login');
     }
+
+    res.send(account.valid);
 
 });

@@ -2,7 +2,14 @@
     
     <head>
         <meta charset="UTF-8">
+        <!--Task 4.2. Link to a CDN copy of the jQuery library-->
+        <script 
+        src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous">
+        </script>
         <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+        <!--Task 4.1. Link an external file in the head section of your homepage html file form-->
+        <script src="/js/script.js"></script>      
     </head>
 
     <body>
@@ -13,6 +20,11 @@
             <input type="text" name="password" id="password">
             <input type="submit" value="Login">
         </form>
+
+        <!--Task 4. Responding to client results-->
+        <div id="errormsg" class="hidemessage">User credentials do not match</div>
+        <div id="successmsg" class="showmessage">User credentials match</div>
+
     </body>
 
 </html>
