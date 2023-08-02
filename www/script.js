@@ -1,4 +1,3 @@
-
 /*Task 4.3. Add a submit button to the form that sends a request to a login route via a jQuery
 ajax post request.*/
 $(document).ready(function(){
@@ -25,16 +24,20 @@ function ajaxPost(){
         dataType: "json",
         success: function(account) {
           if (account.valid == true) {
+            //Removes the login form
             $("#loginform").removeClass("showmessage");
             $("#loginform").addClass("hidemessage");
-
+            //Displays the success message
             $("#successmsg").removeClass("hidemessage");
             $("#successmsg").addClass("showmessage");
-
+            //Removes the error message in case of initial unsuccessful attempt
+            $("#errormsg").removeClass("showmessage");
+            $("#errormsg").addClass("hidemessage");
           } else {
-            $("#loginform").removeClass("hidemessage");
-            $("#loginform").addClass("showmessage");
-
+            //Removes the successful message
+            $("#successmsg").removeClass("showmessage");
+            $("#successmsg").addClass("hidemessage");
+            //Displays the unsuccessful message
             $("#errormsg").removeClass("hidemessage");
             $("#errormsg").addClass("showmessage");
           }
@@ -47,6 +50,7 @@ function ajaxPost(){
   //Reset formData after Posting
   resetData();
 }
+
 //Reset function
 function resetData(){
   $("#username").val("");
