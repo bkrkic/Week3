@@ -1,3 +1,4 @@
+
 /*Task 4.3. Add a submit button to the form that sends a request to a login route via a jQuery
 ajax post request.*/
 $(document).ready(function(){
@@ -33,6 +34,10 @@ function ajaxPost(){
             //Removes the error message in case of initial unsuccessful attempt
             $("#errormsg").removeClass("showmessage");
             $("#errormsg").addClass("hidemessage");
+            //Displays the green colour upon success
+            $("#loginpage").removeClass("hidemessage");
+            $("#loginpage").addClass("showmessage");
+
           } else {
             //Removes the successful message
             $("#successmsg").removeClass("showmessage");
